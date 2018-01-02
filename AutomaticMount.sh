@@ -10,24 +10,24 @@ echo "Checking from node $host"
 echo "////////////////////////////////////////"
 for i in "${nodes_byName[@]}"
 do
-    echo "Ping $i ......."
-    if ping -q -c 2 -W 1 $i >/dev/null; then
-        echo "$i up"
-        echo "\t 1. Mounting /opt/hpe/hpc folder..."
-        #ssh $i 'mount -t nfs supernodexp-headnode:/opt/hpe/hpc /opt/hpe/hpc'
+echo "Ping $i ......."
+if ping -q -c 2 -W 1 $i >/dev/null; then
+    echo "$i up"
+    echo "\t 1. Mounting /opt/hpe/hpc folder..."
+    #ssh $i 'mount -t nfs supernodexp-headnode:/opt/hpe/hpc /opt/hpe/hpc'
 
-        echo "\t 2. Mounting /home folder..."
-        #ssh $i 'mount -t nfs supernodexp-headnode:/home /home'
+    echo "\t 2. Mounting /home folder..."
+    #ssh $i 'mount -t nfs supernodexp-headnode:/home /home'
 
-        echo "\t 3. Mounting /opt/share folder..."
-        #ssh $i 'mount -t nfs supernodexp-headnode:/opt/share /opt/share'
+    echo "\t 3. Mounting /opt/share folder..."
+    #ssh $i 'mount -t nfs supernodexp-headnode:/opt/share /opt/share'
 
-        echo "\t 4. Mounting /opt/yum folder..."
-        #ssh $i 'mount -t nfs supernodexp-headnode:/opt/yum /opt/yum'
-    else
-        echo "$i down"
-    fi
-    echo "////////////////////////////////////////"
-    echo
+    echo "\t 4. Mounting /opt/yum folder..."
+    #ssh $i 'mount -t nfs supernodexp-headnode:/opt/yum /opt/yum'
+else
+    echo "$i down"
+fi
+echo "////////////////////////////////////////"
+echo
 done
 echo "Finish!"
